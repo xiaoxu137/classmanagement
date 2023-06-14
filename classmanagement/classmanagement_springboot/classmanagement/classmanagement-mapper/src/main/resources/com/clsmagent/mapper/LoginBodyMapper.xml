@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsmagent.mapper.LoginBodyMapper">
+    <select id="getLoginBody" resultType="LoginBody">
+        select code,password,status from login_info where code=#{code}
+    </select>
+
+    <select id="getLogin" resultType="LoginBody">
+        select code,password,status from login_info where code=#{code}
+    </select>
+
+    <select id="getRegisterNum" resultType="int">
+        select count(*) from login_info
+    </select>
+
+    <select id="getStatusNum" resultType="int">
+        select count(*) from login_info where status=#{status}
+    </select>
+</mapper>

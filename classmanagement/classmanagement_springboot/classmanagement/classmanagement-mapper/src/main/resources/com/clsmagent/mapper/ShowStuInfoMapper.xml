@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clsmagent.mapper.ShowStuInfoMapper">
+    <select id="getAllInfo" resultMap="getAllInfoMap">
+        select code,stuname,stugender,stubirth,stuphone,stuaddress,stuimg,stupos from student_info
+    </select>
+
+    <resultMap id="getAllInfoMap" type="ShowStuInfo">
+        <result property="code" column="code"/>
+        <result property="stuname" column="stuname"/>
+        <result property="stubirth" column="stubirth"/>
+        <result property="stuphone" column="stuphone"/>
+        <result property="stuaddress" column="stuaddress"/>
+        <result property="stuimg" column="stuimg"/>
+        <result property="stuposCode" column="stupos"/>
+        <result property="stugenderCode" column="stugender"/>
+        <association property="stupos" column="stupos" javaType="string" select="getPos"/>
+        <association property="stugender" column="stugender" javaType="string" select="getgender"/>
+    </resultMap>
+
+    <select id="getgender" resultType="string">
+        select gender from stu_gender where id=#{stugender}
+    </select>
+
+    <select id="getPos" resultType="string">
+        select posdesc from position where id=#{stupos}
+    </select>
+
+
+    <select id="getInfo" resultMap="getAllInfoMap">
+        select code,stuname,stugender,stubirth,stuphone,stuaddress,stuimg,stupos from student_info where code = #{code}
+    </select>
+
+    <insert id="addInfo" >
+        insert into student_info values (null,#{code},#{stuname},#{stugenderCode},#{stubirth},#{stuphone},#{stuaddress},null,null,#{stuposCode},null)
+    </insert>
+
+    <delete id="delInfo">
+        delete from student_info where code = #{code}
+    </delete>
+
+    <update id="updateInfo" >
+        update student_info set stuname=#{stuname},stugender=#{stugenderCode},
+                                stubirth=#{stubirth},stuphone=#{stuphone},stuaddress=#{stuaddress},stupos=#{stuposCode}
+            where code =#{code}
+    </update>
+</mapper>

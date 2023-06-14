@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsmagent.mapper.GradeMapper">
+    <select id="getGrade" resultType="Grade">
+        select * from student_grad  where code=#{code} and date in (select max(date) from student_grad where code=#{code} group by code)
+    </select>
+
+    <delete id="delGrade">
+        delete from student_grad where code=#{code} and date = #{date}
+    </delete>
+
+    <update id="updateGrade">
+        update student_grad set code=#{code},
+                                subject1=#{subject1},subject2=#{subject2},subject3=#{subject3},subject4=#{subject4},subject5=#{subject5},
+                                subject6=#{subject6},subject7=#{subject7},subject8=#{subject8},subject9=#{subject9},date=#{date}
+                                where code =#{code} and date=#{date}
+    </update>
+
+    <insert id="addGrade">
+        insert into student_grad values(null,#{code},#{subject1},#{subject2},#{subject3},#{subject4},#{subject5},#{subject6},
+                                        #{subject7},#{subject8},#{subject9},#{date},#{desc})
+    </insert>
+
+    <select id="getAllGrade" resultType="Grade">
+        select * from student_grad where code=#{code}
+    </select>
+
+    <select id="getAllGrades" resultType="Grade">
+        select * from student_grad
+    </select>
+
+    <select id="getGraded" resultType="Grade">
+        select * from student_grad where code=#{arg0} and date = #{arg1}
+    </select>
+
+    <select id="getTotal" resultType="Grad">
+        select sum(subject1) as subject1,sum(subject2) as subject2,sum(subject3) as subject3,
+               sum(subject4) as subject4,sum(subject5) as subject5,
+            sum(subject6) as subject6,sum(subject7) as subject7,sum(subject8) as subject8,sum(subject9) as subject9
+        from student_grad
+        where date in (select max(date) from student_grad)
+    </select>
+
+    <select id="getTotalGrade" resultType="TotalGrade">
+        select sum(subject1)+sum(subject2)+sum(subject3)+sum(subject4)+
+               sum(subject5)+sum(subject6)+sum(subject7)+sum(subject8)+sum(subject9) as total,date
+        from student_grad
+        group by date
+    </select>
+</mapper>

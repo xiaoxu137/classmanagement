@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsmagent.mapper.SubjectSortMapper">
+    <select id="getSubjectSort" resultType="SubjectSort">
+        select * from subjectsort
+    </select>
+
+    <update id="setSubjectSort">
+        update subject set id=#{id},s1=#{s1},s2=#{s2},s3=#{s3},s4=#{s4},s5=#{s5},s6=#{s6},s7=#{s7},s8=#{s8},s9=#{s9}
+    </update>
+
+</mapper>

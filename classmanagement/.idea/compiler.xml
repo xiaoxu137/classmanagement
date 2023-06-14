@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/classmanagement_springboot/classmanagement/classmanagement-common/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/classmanagement_springboot/classmanagement/classmanagement-controller/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/classmanagement_springboot/classmanagement/classmanagement-mapper/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/classmanagement_springboot/classmanagement/classmanagement-pojo/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/classmanagement_springboot/classmanagement/classmanagement-service/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="classmanagement-service" />
+        <module name="classmanagement-common" />
+        <module name="classmanagement-controller" />
+        <module name="classmanagement-mapper" />
+        <module name="classmanagement-pojo" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

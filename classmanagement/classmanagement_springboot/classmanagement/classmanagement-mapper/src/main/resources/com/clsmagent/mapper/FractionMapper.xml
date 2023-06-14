@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clsmagent.mapper.FractionMapper">
+    <select id="getAllFraction" resultType="FractionInfo">
+        select code,fra from student_fra
+    </select>
+
+    <select id="getFraction" resultType="FractionInfo">
+        select code,fra from student_fra where code=#{code}
+    </select>
+
+    <insert id="addFraction" >
+        insert into student_fra values (null,#{code},#{fra})
+    </insert>
+
+    <update id="updateFra">
+        update student_fra set fra=#{fra} where code=#{code}
+    </update>
+
+    <delete id="delFraction">
+        delete from student_fra where code=#{code}
+    </delete>
+
+    <select id="getQualifiedFra" resultType="int">
+        select count(*)
+        from student_fra where fra > 80;
+    </select>
+
+
+</mapper>

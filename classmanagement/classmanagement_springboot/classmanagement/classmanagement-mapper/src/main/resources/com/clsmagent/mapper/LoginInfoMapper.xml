@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.clsmagent.mapper.LoginInfoMapper">
+    <select id="getLoginInfo" resultMap="getLoginInfoMap">
+        select stuname,code,stupos,stuimg from student_info where code=#{code}
+    </select>
+
+    <resultMap id="getLoginInfoMap" type="LoginInfo">
+        <result property="stuname" column="stuname"/>
+        <result property="code" column="code"/>
+        <result property="stuimg" column="stuimg"/>
+        <association property="stupos" column="stupos" javaType="string" select="getPos"/>
+    </resultMap>
+
+    <select id="getPos" resultType="string">
+        select posdesc from position where id = #{stupos}
+    </select>
+</mapper>

@@ -1,0 +1,13 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /clsmgent
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/classmanagement?serverTimezone=Asia/Shanghai
+    username: root
+    password: "1234567890."
+mybatis:
+  mapper-locations: classpath:com/clsmagent/mapper/*Mapper.xml
+  type-aliases-package: com.clsmagent.pojo
